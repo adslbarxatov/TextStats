@@ -2,6 +2,9 @@ TextStats: changes log
 
 ToDo:
 - Split stats section
+- Make the stats header part of interface and saved file
+- Add name for solution section
+- Add clipboard button
 - Add paragraphs evaluation
 
 Version 1.0:
