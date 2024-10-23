@@ -1,11 +1,14 @@
 TextStats: changes log
 
 ToDo:
-- Split stats section
-- Make the stats header part of interface and saved file
-- Add name for solution section
+- Android: add name for solution section
 - Add clipboard button
 - Add paragraphs evaluation
+
+Version 1.1:
+• Implemented the set of selectable sections for the statistics;
+• Updated the stats presentation;
+• Fixed some minor miscalculations
 
 Version 1.0:
 • Initial commit

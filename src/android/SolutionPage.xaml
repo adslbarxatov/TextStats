@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RD_AAOW.SolutionPage">
+
+	<ScrollView HorizontalOptions="Fill">
+		<StackLayout>
+
+			<Label x:Name="EnterTextLabel" />
+			<Editor x:Name="ManualTextBox" HorizontalOptions="Fill" />
+			<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+				<Button x:Name="ClipboardButton" VerticalOptions="Center" />
+				<Button x:Name="GetStatsButton" VerticalOptions="Center" />
+			</StackLayout>
+			<Label />
+
+			<Label x:Name="LoadFileLabel" />
+			<Button x:Name="LoadFileButton" HorizontalOptions="Center" />
+			<Label x:Name="LoadFileTip" />
+
+			<BoxView VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="1" 
+				WidthRequest="200" Color="#505050" Margin="6" />
+
+			<Label />
+			<Label x:Name="StatsLabel" />
+			<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+				<Button x:Name="SaveStatsButton" />
+				<Button x:Name="MenuButton" />
+			</StackLayout>
+			<Label x:Name="SaveStatsTip" />
+
+			<Label x:Name="ResultLabel" />
+
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

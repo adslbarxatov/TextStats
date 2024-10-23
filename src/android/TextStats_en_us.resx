@@ -117,40 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TextStatsForm_EnterTextLabel" xml:space="preserve">
-    <value>Введите текст:</value>
+  <data name="EnterTextLabel" xml:space="preserve">
+    <value>Enter text:</value>
   </data>
-  <data name="TextStatsForm_GetManualStats" xml:space="preserve">
-    <value>Получить статистику</value>
+  <data name="GetManualStats" xml:space="preserve">
+    <value>Get stats</value>
   </data>
-  <data name="TextStatsForm_SelectFileLabel" xml:space="preserve">
-    <value>Или выберите текстовый файл:</value>
+  <data name="LoadFileLabel" xml:space="preserve">
+    <value>Or select some text file:</value>
   </data>
-  <data name="TextStatsForm_StatsLabel" xml:space="preserve">
-    <value>Статистика текста:</value>
+  <data name="StatsLabel" xml:space="preserve">
+    <value>Text statistics:</value>
   </data>
   <data name="OFTitle" xml:space="preserve">
-    <value>Выберите текстовый файл</value>
+    <value>Select some text file</value>
   </data>
   <data name="OFFilter" xml:space="preserve">
-    <value>Текстовые файлы (*.txt)|*.txt</value>
+    <value>Text files (*.txt)|*.txt</value>
   </data>
   <data name="NonTextFile" xml:space="preserve">
-    <value>(указанный файл пуст или содержит нетекстовые символы)</value>
+    <value>(the specified file is empty or contains non-text characters)</value>
   </data>
   <data name="StatsForTextFile" xml:space="preserve">
-    <value>Статистика для файла «{0:S}»:</value>
+    <value>Statistics for specified file:</value>
   </data>
   <data name="StatsForManualText" xml:space="preserve">
-    <value>Статистика для введённого текста:</value>
+    <value>Statistics for the specified text:</value>
   </data>
   <data name="TextIsEmpty" xml:space="preserve">
-    <value>(текст пуст)</value>
+    <value>(the text is empty)</value>
   </data>
   <data name="SFTitle" xml:space="preserve">
-    <value>Укажите расположение для файла статистики</value>
+    <value>Specify the placement for stats file</value>
   </data>
-  <data name="TextStatsForm_SaveStats" xml:space="preserve">
-    <value>Сохранить статистику</value>
+  <data name="SaveStatsButton" xml:space="preserve">
+    <value>Save stats</value>
+  </data>
+  <data name="ClipboardButton" xml:space="preserve">
+    <value>From clipboard</value>
   </data>
 </root>

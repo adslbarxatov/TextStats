@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TextStatsForm_EnterTextLabel" xml:space="preserve">
+  <data name="EnterTextLabel" xml:space="preserve">
     <value>Введите текст:</value>
   </data>
-  <data name="TextStatsForm_GetManualStats" xml:space="preserve">
+  <data name="GetManualStats" xml:space="preserve">
     <value>Получить статистику</value>
   </data>
-  <data name="TextStatsForm_SelectFileLabel" xml:space="preserve">
+  <data name="LoadFileLabel" xml:space="preserve">
     <value>Или выберите текстовый файл:</value>
   </data>
-  <data name="TextStatsForm_StatsLabel" xml:space="preserve">
+  <data name="StatsLabel" xml:space="preserve">
     <value>Статистика текста:</value>
   </data>
   <data name="OFTitle" xml:space="preserve">
@@ -139,7 +139,7 @@
     <value>(указанный файл пуст или содержит нетекстовые символы)</value>
   </data>
   <data name="StatsForTextFile" xml:space="preserve">
-    <value>Статистика для файла «{0:S}»:</value>
+    <value>Статистика для указанного файла:</value>
   </data>
   <data name="StatsForManualText" xml:space="preserve">
     <value>Статистика для введённого текста:</value>
@@ -150,7 +150,10 @@
   <data name="SFTitle" xml:space="preserve">
     <value>Укажите расположение для файла статистики</value>
   </data>
-  <data name="TextStatsForm_SaveStats" xml:space="preserve">
+  <data name="SaveStatsButton" xml:space="preserve">
     <value>Сохранить статистику</value>
+  </data>
+  <data name="ClipboardButton" xml:space="preserve">
+    <value>Из буфера</value>
   </data>
 </root>

@@ -10,6 +10,10 @@ namespace RD_AAOW
 	/// </summary>
 	public partial class TextStatsForm: Form
 		{
+		// Переменные
+		private string[] currentStats;
+		private string fullStats;
+
 		/// <summary>
 		/// Конструктор. Запускает главную форму
 		/// </summary>
@@ -46,6 +50,10 @@ namespace RD_AAOW
 			OFDialog.Title = RDLocale.GetText ("OFTitle");
 			SFDialog.Title = RDLocale.GetText ("SFTitle");
 			OFDialog.Filter = SFDialog.Filter = RDLocale.GetText ("OFFilter");
+
+			StatsSection.Items.Clear ();
+			StatsSection.Items.AddRange (TextStatsMath.StatisticsGroups);
+			StatsSection.SelectedIndex = 0;
 			}
 
 		// Запрос справки
@@ -77,20 +85,39 @@ namespace RD_AAOW
 			string text = TextStatsMath.GetTextFromFile (OFDialog.FileName);
 			if (string.IsNullOrWhiteSpace (text))
 				{
+				StatsSection.Enabled = false;
 				ResultsBox.Text = RDLocale.GetText ("NonTextFile");
 				return;
 				}
 
-			ResultsBox.Text = string.Format (RDLocale.GetText ("StatsForTextFile"),
-				Path.GetFileName (OFDialog.FileName)) + RDLocale.RNRN +
-				TextStatsMath.GetStatistics (text);
+			// Отображение
+			StatsSection.Enabled = true;
+			StatsLabel.Text = string.Format (RDLocale.GetText ("StatsForTextFile"),
+				Path.GetFileName (OFDialog.FileName));
+			currentStats = TextStatsMath.GetStatistics (text);
+			fullStats = TextStatsMath.MakeFullStatistics (currentStats);
+
+			StatsSection_SelectedIndexChanged (null, null);
 			}
 
 		// Вызов статистики для введённого текста
 		private void GetManualStats_Click (object sender, EventArgs e)
 			{
-			ResultsBox.Text = RDLocale.GetText ("StatsForManualText") + RDLocale.RNRN +
-				TextStatsMath.GetStatistics (ManualTextBox.Text);
+			// Запрос
+			currentStats = TextStatsMath.GetStatistics (ManualTextBox.Text);
+			if (currentStats == null)
+				{
+				ResultsBox.Text = RDLocale.GetText ("TextIsEmpty");
+				StatsSection.Enabled = false;
+				return;
+				}
+
+			// Отображение
+			fullStats = TextStatsMath.MakeFullStatistics (currentStats);
+			StatsSection.Enabled = true;
+			StatsLabel.Text = RDLocale.GetText ("StatsForManualText");
+
+			StatsSection_SelectedIndexChanged (null, null);
 			}
 
 		// Сохранение статистики
@@ -101,7 +128,29 @@ namespace RD_AAOW
 
 		private void SFDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			TextStatsMath.PutTextToFile (SFDialog.FileName, ResultsBox.Text);
+			TextStatsMath.PutTextToFile (SFDialog.FileName, StatsLabel.Text + RDLocale.RNRN + fullStats);
+			}
+
+		// Выбор раздела статистики
+		private void StatsSection_SelectedIndexChanged (object sender, EventArgs e)
+			{
+			// Защита
+			if (currentStats == null)
+				return;
+
+			// Полная статистика
+			if (StatsSection.SelectedIndex == 0)
+				{
+				ResultsBox.Text = fullStats;
+				ResultsBox.Focus ();
+				ResultsBox.DeselectAll ();
+				return;
+				}
+
+			// Только выбранная секция
+			ResultsBox.Text = currentStats[StatsSection.SelectedIndex - 1];
+			ResultsBox.Focus ();
+			ResultsBox.DeselectAll ();
 			}
 		}
 	}
