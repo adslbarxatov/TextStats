@@ -1,14 +1,14 @@
 TextStats: changes log
 
 ToDo:
-- Android: add name for solution section
-- Add clipboard button
+- Windows: add clipboard button
 - Add paragraphs evaluation
 
 Version 1.1:
 • Implemented the set of selectable sections for the statistics;
 • Updated the stats presentation;
-• Fixed some minor miscalculations
+• Fixed some minor miscalculations;
+• Android: fixed missing name for stats section
 
 Version 1.0:
 • Initial commit
