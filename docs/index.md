@@ -24,4 +24,33 @@ This tool obtains statistics on the specified text. It allows you to collect nex
 - Maximum, minimum and average lengths of sentences
 
 The text can be loaded from file under UTF8, UTF16 and CP1251 encodings (auto-detection by
-preamble). Statistics can also be saved to file
+preamble). Statistics can also be saved to file.
+
+***Warning***: this app now detects only next characters as letters when considering words,
+sentences and paragraphs. Other characters will be treated as separators. Let us know if you
+need to change this behavior.
+
+- Russian alphabet:
+
+```
+АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
+абвгдеёжзийклмнопрстуфхцчшщъыьэюя
+```
+
+- English alphabet:
+
+```
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+```
+
+- Digits:
+
+```
+0123456789
+```
+- Combining characters:
+
+```
+-'’
+```

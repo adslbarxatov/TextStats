@@ -1,14 +1,15 @@
 TextStats: changes log
 
-ToDo:
-- Windows: add clipboard button
-- Add paragraphs evaluation
+Version 1.2:
+â€¢ Implemented the paragraphs processing;
+â€¢ Sort and output algorithms have been rewritten and simplified;
+â€¢ Windows: added the clipboard button
 
 Version 1.1:
-• Implemented the set of selectable sections for the statistics;
-• Updated the stats presentation;
-• Fixed some minor miscalculations;
-• Android: fixed missing name for stats section
+â€¢ Implemented the set of selectable sections for the statistics;
+â€¢ Updated the stats presentation;
+â€¢ Fixed some minor miscalculations;
+â€¢ Android: fixed missing name for stats section
 
 Version 1.0:
-• Initial commit
+â€¢ Initial commit
