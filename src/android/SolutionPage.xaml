@@ -6,21 +6,23 @@
 	<ScrollView HorizontalOptions="Fill">
 		<StackLayout>
 
+			<!-- Зона ввода -->
 			<Label x:Name="EnterTextLabel" />
 			<Editor x:Name="ManualTextBox" HorizontalOptions="Fill" />
-			<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-				<Button x:Name="ClipboardButton" VerticalOptions="Center" />
-				<Button x:Name="GetStatsButton" VerticalOptions="Center" />
-			</StackLayout>
+			<Button x:Name="GetStatsButton" HorizontalOptions="Center" />
 			<Label />
 
 			<Label x:Name="LoadFileLabel" />
-			<Button x:Name="LoadFileButton" HorizontalOptions="Center" />
+			<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+				<Button x:Name="ClipboardButton" VerticalOptions="Center" />
+				<Button x:Name="LoadFileButton" VerticalOptions="Center" />
+			</StackLayout>
 			<Label x:Name="LoadFileTip" />
 
 			<BoxView VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="1" 
 				WidthRequest="200" Color="#505050" Margin="6" />
 
+			<!-- Зона результатов -->
 			<Label />
 			<Label x:Name="StatsLabel" />
 			<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
@@ -29,7 +31,8 @@
 			</StackLayout>
 			<Label x:Name="SaveStatsTip" />
 
-			<Label x:Name="ResultLabel" />
+			<!-- Расширяемый раздел секций статистики -->
+			<StackLayout Orientation="Vertical" HorizontalOptions="Center" x:Name="ResultField" />
 
 		</StackLayout>
 	</ScrollView>

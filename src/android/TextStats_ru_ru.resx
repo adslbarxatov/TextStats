@@ -124,7 +124,7 @@
     <value>Получить статистику</value>
   </data>
   <data name="LoadFileLabel" xml:space="preserve">
-    <value>Или выберите текстовый файл:</value>
+    <value>Или выберите источник:</value>
   </data>
   <data name="StatsLabel" xml:space="preserve">
     <value>Статистика текста:</value>
@@ -154,6 +154,12 @@
     <value>Сохранить статистику</value>
   </data>
   <data name="ClipboardButton" xml:space="preserve">
-    <value>Из буфера</value>
+    <value>Из буфера обмена</value>
+  </data>
+  <data name="SolutionPage" xml:space="preserve">
+    <value>Статистика текста</value>
+  </data>
+  <data name="FileButton" xml:space="preserve">
+    <value>Из файла</value>
   </data>
 </root>

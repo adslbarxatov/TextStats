@@ -124,7 +124,7 @@
     <value>Получить статистику</value>
   </data>
   <data name="TextStatsForm_SelectFileLabel" xml:space="preserve">
-    <value>Или выберите текстовый файл:</value>
+    <value>Или выберите источник:</value>
   </data>
   <data name="TextStatsForm_StatsLabel" xml:space="preserve">
     <value>Статистика текста:</value>
@@ -152,5 +152,11 @@
   </data>
   <data name="TextStatsForm_SaveStats" xml:space="preserve">
     <value>Сохранить статистику</value>
+  </data>
+  <data name="TextStatsForm_FromClipboardButton" xml:space="preserve">
+    <value>Из буфера обмена</value>
+  </data>
+  <data name="TextStatsForm_SelectFileButton" xml:space="preserve">
+    <value>Из файла</value>
   </data>
 </root>

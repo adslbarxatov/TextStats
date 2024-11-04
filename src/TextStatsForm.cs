@@ -152,5 +152,12 @@ namespace RD_AAOW
 			ResultsBox.Focus ();
 			ResultsBox.DeselectAll ();
 			}
+
+		// Копирование из буфера обмена
+		private void FromClipboardButton_Click (object sender, EventArgs e)
+			{
+			ManualTextBox.Text = RDGenerics.GetFromClipboard ();
+			GetManualStats_Click (null, null);
+			}
 		}
 	}

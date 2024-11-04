@@ -124,7 +124,7 @@
     <value>Get stats</value>
   </data>
   <data name="LoadFileLabel" xml:space="preserve">
-    <value>Or select some text file:</value>
+    <value>Or select a source:</value>
   </data>
   <data name="StatsLabel" xml:space="preserve">
     <value>Text statistics:</value>
@@ -155,5 +155,11 @@
   </data>
   <data name="ClipboardButton" xml:space="preserve">
     <value>From clipboard</value>
+  </data>
+  <data name="SolutionPage" xml:space="preserve">
+    <value>Text statistics</value>
+  </data>
+  <data name="FileButton" xml:space="preserve">
+    <value>From file</value>
   </data>
 </root>

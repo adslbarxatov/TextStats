@@ -13,6 +13,8 @@ namespace RD_AAOW
 
 		// Прочие параметры
 		private RDAppStartupFlags flags;
+		private string[] currentStats;
+		private string fullStats;
 
 		// Цветовая схема
 		private readonly Color
@@ -28,12 +30,14 @@ namespace RD_AAOW
 
 		private ContentPage solutionPage, aboutPage;
 
-		private Label aboutFontSizeField;
-		private Label resultLabel, statsLabel;
+		private Label aboutFontSizeField, statsLabel;
+		private List<Label> resultFields = new List<Label> ();
 
-		private Button getManualStatsButton, languageButton;
+		private Button /*getManualStatsButton,*/ languageButton;
 
 		private Editor manualTextBox;
+
+		private StackLayout resultField;
 
 		#endregion
 
@@ -69,8 +73,6 @@ namespace RD_AAOW
 			manualTextBox = AndroidSupport.ApplyEditorSettings (solutionPage, "ManualTextBox",
 				solutionFieldBackColor, Keyboard.Text, 10000, "", null, false);
 
-			AndroidSupport.ApplyButtonSettings (solutionPage, "ClipboardButton",
-				RDLocale.GetText ("ClipboardButton"), solutionFieldBackColor, ClipboardButton_Clicked, false);
 			AndroidSupport.ApplyButtonSettings (solutionPage, "GetStatsButton",
 				RDLocale.GetText ("GetManualStats"), solutionFieldBackColor, GetStatsButton_Clicked, false);
 
@@ -78,8 +80,10 @@ namespace RD_AAOW
 			AndroidSupport.ApplyLabelSettings (solutionPage, "LoadFileLabel",
 				RDLocale.GetText ("LoadFileLabel"), RDLabelTypes.HeaderLeft);
 
+			AndroidSupport.ApplyButtonSettings (solutionPage, "ClipboardButton",
+				RDLocale.GetText ("ClipboardButton"), solutionFieldBackColor, ClipboardButton_Clicked, false);
 			Button lfb = AndroidSupport.ApplyButtonSettings (solutionPage, "LoadFileButton",
-				RDDefaultButtons.Select, solutionFieldBackColor, LoadFile_Clicked);
+				RDLocale.GetText ("FileButton"), solutionFieldBackColor, LoadFile_Clicked, false);
 			Label lft = AndroidSupport.ApplyLabelSettings (solutionPage, "LoadFileTip",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Message_NotificationPermission),
 				RDLabelTypes.ErrorTip);
@@ -90,8 +94,37 @@ namespace RD_AAOW
 			// Раздел результатов
 			statsLabel = AndroidSupport.ApplyLabelSettings (solutionPage, "StatsLabel",
 				RDLocale.GetText ("StatsLabel"), RDLabelTypes.HeaderLeft);
-			resultLabel = AndroidSupport.ApplyLabelSettings (solutionPage, "ResultLabel",
-				" ", RDLabelTypes.FieldMonotype);
+
+			resultField = (StackLayout)solutionPage.FindByName ("ResultField");
+			resultField.Add (new Label ());
+
+			string[] captions = TextStatsMath.StatisticsGroups;
+			for (int i = 0; i < captions.Length - 1; i++)
+				{
+				Label l = new Label ();
+				l.FontAttributes = FontAttributes.Bold | FontAttributes.Italic;
+				l.FontSize = AndroidSupport.MasterFontSize * 1.1;
+				l.HorizontalOptions = LayoutOptions.Start;
+				l.HorizontalTextAlignment = TextAlignment.Start;
+				l.Margin = new Thickness (3);
+				l.Text = captions[i + 1];
+				l.TextColor = AndroidSupport.MasterTextColor;
+				resultField.Add (l);
+
+				resultFields.Add (new Label ());
+				resultFields[i].FontAttributes = FontAttributes.None;
+				resultFields[i].FontFamily = AndroidSupport.MonospaceFont;
+				resultFields[i].FontSize = AndroidSupport.MasterFontSize * 1.05;
+				resultFields[i].HorizontalOptions = LayoutOptions.Start;
+				resultFields[i].HorizontalTextAlignment = TextAlignment.Start;
+				resultFields[i].Margin = new Thickness (6);
+				resultFields[i].Text = "";
+				resultFields[i].TextColor = AndroidSupport.MasterTextColor;
+				resultField.Add (resultFields[i]);
+
+				resultField.Add (new Label ());
+				}
+			resultField.IsVisible = false;
 
 			// Вызов меню и сохранение
 			AndroidSupport.ApplyButtonSettings (solutionPage, "MenuButton",
@@ -260,8 +293,7 @@ namespace RD_AAOW
 			AndroidSupport.HideKeyboard (manualTextBox);
 			manualTextBox.Text = await RDGenerics.GetFromClipboard ();
 
-			statsLabel.Text = RDLocale.GetText ("StatsForManualText");
-			resultLabel.Text = TextStatsMath.GetStatistics (manualTextBox.Text);
+			FillFields ();
 			}
 
 		// Метод загружает текст из файла
@@ -270,26 +302,69 @@ namespace RD_AAOW
 			string text = await TextStatsMath.GetTextFromFile ();
 			if (string.IsNullOrWhiteSpace (text))
 				{
-				resultLabel.Text = RDLocale.GetText ("NonTextFile");
+				ClearFields (false);
+				AndroidSupport.ShowBalloon (RDLocale.GetText ("NonTextFile"), true);
 				return;
 				}
 
+			// Запрос
+			currentStats = TextStatsMath.GetStatistics (manualTextBox.Text);
+			if (currentStats == null)
+				{
+				ClearFields (true);
+				return;
+				}
+
+			// Отображение
 			statsLabel.Text = RDLocale.GetText ("StatsForTextFile");
-			resultLabel.Text = TextStatsMath.GetStatistics (text);
+			LoadFields ();
+			}
+
+		// Методы обработки отдельных секций статистики
+		private void FillFields ()
+			{
+			// Запрос
+			currentStats = TextStatsMath.GetStatistics (manualTextBox.Text);
+			if (currentStats == null)
+				{
+				ClearFields (true);
+				return;
+				}
+
+			// Отображение
+			statsLabel.Text = RDLocale.GetText ("StatsForManualText");
+			LoadFields ();
+			}
+
+		private void ClearFields (bool Message)
+			{
+			for (int i = 0; i < resultFields.Count; i++)
+				resultFields[i].Text = "";
+
+			resultField.IsVisible = false;
+			if (Message)
+				AndroidSupport.ShowBalloon (RDLocale.GetText ("TextIsEmpty"), true);
+			}
+
+		private void LoadFields ()
+			{
+			fullStats = TextStatsMath.MakeFullStatistics (currentStats);
+			for (int i = 0; i < resultFields.Count; i++)
+				resultFields[i].Text = currentStats[i];
+			resultField.IsVisible = true;
 			}
 
 		// Метод получается статистику по введённому тексту
 		private void GetStatsButton_Clicked (object sender, EventArgs e)
 			{
 			AndroidSupport.HideKeyboard (manualTextBox);
-			statsLabel.Text = RDLocale.GetText ("StatsForManualText");
-			resultLabel.Text = TextStatsMath.GetStatistics (manualTextBox.Text);
+			FillFields ();
 			}
 
 		// Метод сохраняет статистику в файл
 		private async void SaveFile_Clicked (object sender, EventArgs e)
 			{
-			await TextStatsMath.PutTextToFile ("Stats.txt", resultLabel.Text);
+			await TextStatsMath.PutTextToFile ("Stats.txt", fullStats);
 			}
 
 		#endregion

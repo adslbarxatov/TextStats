@@ -22,6 +22,8 @@ This tool obtains statistics on the specified text. It allows you to collect nex
 - Maximum, minimum and average word lengths
 - Quantity of sentences with their lengths in letters and words (in descending order)
 - Maximum, minimum and average lengths of sentences
+- Quantity of paragraphs with their lengths in letters, words and sentences (in descending order)
+- Maximum, minimum and average lengths of paragraphs
 
 The text can be loaded from file under UTF8, UTF16 and CP1251 encodings (auto-detection by
 preamble). Statistics can also be saved to file.
