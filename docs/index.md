@@ -51,7 +51,7 @@ abcdefghijklmnopqrstuvwxyz
 ```
 0123456789
 ```
-- Combining characters:
+- Connecting characters:
 
 ```
 -'’
