@@ -33,7 +33,7 @@ namespace RD_AAOW
 		private Label aboutFontSizeField, statsLabel;
 		private List<Label> resultFields = new List<Label> ();
 
-		private Button /*getManualStatsButton,*/ languageButton;
+		private Button languageButton;
 
 		private Editor manualTextBox;
 
@@ -112,6 +112,7 @@ namespace RD_AAOW
 				resultField.Add (l);
 
 				resultFields.Add (new Label ());
+				resultFields[i].BackgroundColor = Color.FromRgba (0, 0, 0, 15);
 				resultFields[i].FontAttributes = FontAttributes.None;
 				resultFields[i].FontFamily = AndroidSupport.MonospaceFont;
 				resultFields[i].FontSize = AndroidSupport.MasterFontSize * 1.05;

@@ -1,5 +1,9 @@
 TextStats: changes log
 
+Version 1.2.2:
+• The “App about” interface has been updated;
+• Android: MAUI support packages have been updated
+
 Version 1.2:
 • Implemented the paragraphs processing;
 • Sort and output algorithms have been rewritten and simplified;
