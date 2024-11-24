@@ -36,6 +36,45 @@ namespace RD_AAOW
 
 			}
 
+		// Определения для горячих клавиш
+		/// <summary>
+		/// Метод переопределяет обработку клавиатуры формой
+		/// </summary>
+		protected override bool ProcessCmdKey (ref Message msg, Keys keyData)
+			{
+			switch (keyData)
+				{
+				// Открытие файла
+				case Keys.Control | Keys.O:
+					SelectFileButton_Click (null, null);
+					return true;
+
+				// Получение из буфера обмена
+				case Keys.Control | Keys.B:
+					FromClipboardButton_Click (null, null);
+					return true;
+
+				// Сохранение статистики
+				case Keys.Control | Keys.S:
+					SaveStats_Click (null, null);
+					return true;
+
+				// Поиск
+				case Keys.Control | Keys.F:
+					SearchButton_Click (null, null);
+					return true;
+
+				// Перезапрос ручной статистики
+				case Keys.Control | Keys.G:
+					GetManualStats_Click (null, null);
+					return true;
+
+				// Остальные клавиши обрабатываются стандартной процедурой
+				default:
+					return base.ProcessCmdKey (ref msg, keyData);
+				}
+			}
+
 		// Локализация формы
 		private void LanguageCombo_SelectedIndexChanged (object sender, EventArgs e)
 			{
@@ -158,6 +197,79 @@ namespace RD_AAOW
 			{
 			ManualTextBox.Text = RDGenerics.GetFromClipboard ();
 			GetManualStats_Click (null, null);
+			}
+
+		// Поиск отдельных символов или слов
+		private void SearchButton_Click (object sender, EventArgs e)
+			{
+			// Контроль существования источника
+			bool hasManualText = !string.IsNullOrWhiteSpace (ManualTextBox.Text);
+			bool hasFile = !string.IsNullOrWhiteSpace (TextStatsMath.LastFilePath);
+			if (!hasManualText && !hasFile)
+				{
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "SearchSourceNotFound", 1000);
+				return;
+				}
+
+			// Ввод текста
+			string textForSearch = RDGenerics.LocalizedMessageBox ("SearchRequest", true, 50);
+			if (string.IsNullOrWhiteSpace (textForSearch))
+				{
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "SearchSourceNotFound", 1000);
+				return;
+				}
+
+			// Определение источника
+			bool useFile = false;
+			bool useManualText = false;
+			if (hasFile && hasManualText)
+				{
+				switch (RDGenerics.MessageBox (RDMessageTypes.Question_Center, RDLocale.GetText ("SearchVariant"),
+					RDLocale.GetText ("SearchVariantFile"), RDLocale.GetText ("SearchVariantText"),
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel)))
+					{
+					case RDMessageButtons.ButtonOne:
+						useFile = true;
+						break;
+
+					case RDMessageButtons.ButtonTwo:
+						useManualText = true;
+						break;
+					}
+				}
+
+			else if (hasFile)
+				{
+				useFile = true;
+				}
+			else //if (hasManualText)
+				{
+				useManualText = true;
+				}
+
+			// Запуск
+			string sourceText;
+			if (useFile)
+				sourceText = TextStatsMath.GetTextFromLastFile ();
+			else if (useManualText)
+				sourceText = ManualTextBox.Text;
+			else
+				return;
+
+			// Результат
+			string stats = TextStatsMath.SearchForText (sourceText, textForSearch);
+			if (RDGenerics.MessageBox (RDMessageTypes.Information_Left, stats,
+				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Close),
+				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save)) == RDMessageButtons.ButtonTwo)
+				{
+				if (SFDialog.ShowDialog () != DialogResult.OK)
+					return;
+
+				stats = StatsLabel.Text +
+					string.Format (RDLocale.GetText ("SearchHeaderFmt"), textForSearch) +
+					RDLocale.RNRN + stats;
+				TextStatsMath.PutTextToFile (SFDialog.FileName, stats);
+				}
 			}
 		}
 	}

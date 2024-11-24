@@ -1,7 +1,8 @@
 TextStats: changes log
 
-ToDo:
-- Implement the word search (thanks to @MecyJere)
+Version 1.3:
+• Implemented the search for specified word or phrase (thanks to @MecyJere);
+• Windows: added some useful hotkeys
 
 Version 1.2.2:
 • The “App about” interface has been updated;

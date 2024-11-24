@@ -159,4 +159,25 @@
   <data name="TextStatsForm_SelectFileButton" xml:space="preserve">
     <value>Из файла</value>
   </data>
+  <data name="SearchVariant" xml:space="preserve">
+    <value>Выберите вариант для поиска</value>
+  </data>
+  <data name="SearchVariantFile" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="SearchVariantText" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="SearchSourceNotFound" xml:space="preserve">
+    <value>Отсутствует текст для поиска</value>
+  </data>
+  <data name="SearchRequest" xml:space="preserve">
+    <value>Укажите символ, слово или фразу для поиска</value>
+  </data>
+  <data name="TextStatsForm_SearchButton" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="SearchHeaderFmt" xml:space="preserve">
+    <value> результаты поиска для «{0:S}»</value>
+  </data>
 </root>

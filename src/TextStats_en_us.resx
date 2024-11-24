@@ -159,4 +159,25 @@
   <data name="TextStatsForm_SelectFileButton" xml:space="preserve">
     <value>From file</value>
   </data>
+  <data name="SearchVariant" xml:space="preserve">
+    <value>Select an option to search</value>
+  </data>
+  <data name="SearchVariantFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="SearchVariantText" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="SearchSourceNotFound" xml:space="preserve">
+    <value>There is no text for search</value>
+  </data>
+  <data name="SearchRequest" xml:space="preserve">
+    <value>Enter a character, word or phrase to search for</value>
+  </data>
+  <data name="TextStatsForm_SearchButton" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchHeaderFmt" xml:space="preserve">
+    <value> search results for “{0:S}”</value>
+  </data>
 </root>

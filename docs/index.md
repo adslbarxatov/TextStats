@@ -8,7 +8,6 @@
 - [General information](#general-information)
 - [Supported characters](#supported-characters)
 - [Hotkeys](#hotkeys)
-- [General information](#general-information)
 - [Download links](https://adslbarxatov.github.io/DPArray#textstats)
 - [Версия на русском языке](https://adslbarxatov.github.io/TextStats/ru)
 

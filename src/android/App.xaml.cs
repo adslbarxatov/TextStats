@@ -16,6 +16,8 @@ namespace RD_AAOW
 		private string[] currentStats;
 		private string fullStats;
 
+		private List<string> searchVariants = new List<string> ();
+
 		// Цветовая схема
 		private readonly Color
 			solutionMasterBackColor = Color.FromArgb ("#e0f0ff"),
@@ -112,7 +114,7 @@ namespace RD_AAOW
 				resultField.Add (l);
 
 				resultFields.Add (new Label ());
-				resultFields[i].BackgroundColor = Color.FromRgba (0, 0, 0, 15);
+				/*resultFields[i].BackgroundColor = Color.FromRgba (0, 0, 0, 15);*/
 				resultFields[i].FontAttributes = FontAttributes.None;
 				resultFields[i].FontFamily = AndroidSupport.MonospaceFont;
 				resultFields[i].FontSize = AndroidSupport.MasterFontSize * 1.05;
@@ -130,6 +132,8 @@ namespace RD_AAOW
 			// Вызов меню и сохранение
 			AndroidSupport.ApplyButtonSettings (solutionPage, "MenuButton",
 				RDDefaultButtons.Menu, solutionFieldBackColor, AboutButton_Clicked);
+			AndroidSupport.ApplyButtonSettings (solutionPage, "SearchButton",
+				RDDefaultButtons.Find, solutionFieldBackColor, SearchButton_Clicked);
 			Button ssb = AndroidSupport.ApplyButtonSettings (solutionPage, "SaveStatsButton",
 				RDLocale.GetText ("SaveStatsButton"), solutionFieldBackColor, SaveFile_Clicked, false);
 			Label sst = AndroidSupport.ApplyLabelSettings (solutionPage, "SaveStatsTip",
@@ -366,6 +370,85 @@ namespace RD_AAOW
 		private async void SaveFile_Clicked (object sender, EventArgs e)
 			{
 			await TextStatsMath.PutTextToFile ("Stats.txt", fullStats);
+			}
+
+		// Поиск отдельных символов или слов
+		private async void SearchButton_Clicked (object sender, EventArgs e)
+			{
+			// Контроль существования источника
+			bool hasManualText = !string.IsNullOrWhiteSpace (manualTextBox.Text);
+			bool hasFile = !string.IsNullOrWhiteSpace (TextStatsMath.LastFilePath);
+			if (!hasManualText && !hasFile)
+				{
+				AndroidSupport.ShowBalloon (RDLocale.GetText ("SearchSourceNotFound"), true);
+				return;
+				}
+
+			// Ввод текста
+			string textForSearch = await AndroidSupport.ShowInput (ProgramDescription.AssemblyVisibleName,
+				RDLocale.GetText ("SearchRequest"), RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK),
+				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel), 50, Keyboard.Default);
+			if (string.IsNullOrWhiteSpace (textForSearch))
+				{
+				AndroidSupport.ShowBalloon (RDLocale.GetText ("SearchSourceNotFound"), true);
+				return;
+				}
+
+			// Определение источника
+			bool useFile = false;
+			bool useManualText = false;
+			if (hasFile && hasManualText)
+				{
+				if (searchVariants.Count < 1)
+					{
+					searchVariants.Add (RDLocale.GetText ("SearchVariantFile"));
+					searchVariants.Add (RDLocale.GetText ("SearchVariantText"));
+					}
+
+				int res = await AndroidSupport.ShowList (RDLocale.GetText ("SearchVariant"),
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel), searchVariants);
+
+				switch (res)
+					{
+					case 0:
+						useFile = true;
+						break;
+
+					case 1:
+						useManualText = true;
+						break;
+					}
+				}
+
+			else if (hasFile)
+				{
+				useFile = true;
+				}
+			else //if (hasManualText)
+				{
+				useManualText = true;
+				}
+
+			// Запуск
+			string sourceText;
+			if (useFile)
+				sourceText = TextStatsMath.GetTextFromLastFile ();
+			else if (useManualText)
+				sourceText = manualTextBox.Text;
+			else
+				return;
+
+			// Результат
+			string stats = TextStatsMath.SearchForText (sourceText, textForSearch);
+			if (!await AndroidSupport.ShowMessage (stats,
+				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Close),
+				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save)))
+				{
+				stats = statsLabel.Text +
+					string.Format (RDLocale.GetText ("SearchHeaderFmt"), textForSearch) +
+					RDLocale.RNRN + stats;
+				await TextStatsMath.PutTextToFile ("SearchStats.txt", stats);
+				}
 			}
 
 		#endregion

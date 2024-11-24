@@ -15,6 +15,7 @@
 			<Label x:Name="LoadFileLabel" />
 			<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 				<Button x:Name="ClipboardButton" VerticalOptions="Center" />
+				<Label Text=" | " />
 				<Button x:Name="LoadFileButton" VerticalOptions="Center" />
 			</StackLayout>
 			<Label x:Name="LoadFileTip" />
@@ -27,6 +28,9 @@
 			<Label x:Name="StatsLabel" />
 			<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 				<Button x:Name="SaveStatsButton" />
+				<Label Text=" | " />
+				<Button x:Name="SearchButton" />
+				<Label Text=" | " />
 				<Button x:Name="MenuButton" />
 			</StackLayout>
 			<Label x:Name="SaveStatsTip" />

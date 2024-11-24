@@ -1,0 +1,69 @@
+<html>
+
+<head>
+<title>TextStats: user guide | TextStats</title>
+</head>
+
+<body>
+<h1 id="textstats-user-guide">TextStats: user guide</h1>
+<p>ƒ <i>RD AAOW FDL</i></p>
+
+<br />
+<p>This tool obtains statistics on the specified text. It allows you to collect next data:</p>
+<ul>
+<li>Quantity of every letter in the text (in descending order)</li>
+<li>Quantity of every digit (in descending order)</li>
+<li>Quantity of every character (in descending order)</li>
+<li>Percentage of letters, digits and characters</li>
+<li>Quantity of words with their lengths (in descending order)</li>
+<li>Maximum, minimum and average word lengths</li>
+<li>Quantity of sentences with their lengths in letters and words (in descending order)</li>
+<li>Maximum, minimum and average lengths of sentences</li>
+<li>Quantity of paragraphs with their lengths in letters, words and sentences (in descending order)</li>
+<li>Maximum, minimum and average lengths of paragraphs</li>
+</ul>
+<p>The text can be loaded from file under UTF8, UTF16 and CP1251 encodings (auto-detection by
+preamble). Statistics can also be saved to file.</p>
+
+
+<h3 id="supported-characters">Supported characters</h3>
+<p>This app now detects only next characters as letters when considering words,
+sentences and paragraphs. Other characters will be treated as separators. Let us know if you
+need to change this behavior.</p>
+<ul>
+<li>Russian alphabet:</li>
+</ul>
+<pre><code>АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
+абвгдеёжзийклмнопрстуфхцчшщъыьэюя
+</code></pre>
+<ul>
+<li>English alphabet:</li>
+</ul>
+<pre><code>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+</code></pre>
+<ul>
+<li>Digits:</li>
+</ul>
+<pre><code>0123456789
+</code></pre>
+<ul>
+<li>Connecting characters:</li>
+</ul>
+<pre><code>-'’
+</code></pre>
+
+<r/>
+
+<h3 id="hotkeys">Hotkeys</h3>
+<p>For Windows:</p>
+<ul>
+<li><code>Ctrl</code> + <code>O</code>: open text file</li>
+<li><code>Ctrl</code> + <code>S</code>: save statistics to file</li>
+<li><code>Ctrl</code> + <code>F</code>: search for specified text</li>
+<li><code>Ctrl</code> + <code>G</code>: get statistics for entered text again</li>
+<li><code>Ctrl</code> + <code>B</code>: get text from clipboard</li>
+</ul>
+
+</body>
+</html>

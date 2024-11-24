@@ -6,8 +6,8 @@
 ### Содержание страницы
 
 - [Общие сведения](#section-1)
-- [Поддерживаемые символы](#section-1)
-- [Горячие клавиши](#section-1)
+- [Поддерживаемые символы](#section-2)
+- [Горячие клавиши](#section-3)
 - [Ссылки для загрузки](https://adslbarxatov.github.io/DPArray/ru#textstats)
 - [English version](https://adslbarxatov.github.io/TextStats)
 
