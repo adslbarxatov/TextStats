@@ -1,10 +1,13 @@
 # TextStats: user guide
-> **ƒ** &nbsp;RD AAOW FDL; 21.10.2024; 21:09
+> **ƒ** &nbsp;RD AAOW FDL; 24.11.2024; 19:05
 
 
 
 ### Page contents
 
+- [General information](#general-information)
+- [Supported characters](#supported-characters)
+- [Hotkeys](#hotkeys)
 - [General information](#general-information)
 - [Download links](https://adslbarxatov.github.io/DPArray#textstats)
 - [Версия на русском языке](https://adslbarxatov.github.io/TextStats/ru)
@@ -28,7 +31,13 @@ This tool obtains statistics on the specified text. It allows you to collect nex
 The text can be loaded from file under UTF8, UTF16 and CP1251 encodings (auto-detection by
 preamble). Statistics can also be saved to file.
 
-***Warning***: this app now detects only next characters as letters when considering words,
+&nbsp;
+
+
+
+### Supported characters
+
+This app now detects only next characters as letters when considering words,
 sentences and paragraphs. Other characters will be treated as separators. Let us know if you
 need to change this behavior.
 
@@ -56,3 +65,16 @@ abcdefghijklmnopqrstuvwxyz
 ```
 -'’
 ```
+
+&nbsp;
+
+
+
+### Hotkeys
+
+For Windows:
+- `Ctrl` + `O`: open text file
+- `Ctrl` + `S`: save statistics to file
+- `Ctrl` + `F`: search for specified text
+- `Ctrl` + `G`: get statistics for entered text again
+- `Ctrl` + `B`: get text from clipboard
