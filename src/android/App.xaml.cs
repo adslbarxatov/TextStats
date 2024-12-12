@@ -313,7 +313,7 @@ namespace RD_AAOW
 				}
 
 			// Запрос
-			currentStats = TextStatsMath.GetStatistics (manualTextBox.Text);
+			currentStats = TextStatsMath.GetStatistics (text);
 			if (currentStats == null)
 				{
 				ClearFields (true);

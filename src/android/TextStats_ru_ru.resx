@@ -136,7 +136,7 @@
     <value>Текстовые файлы (*.txt)|*.txt</value>
   </data>
   <data name="NonTextFile" xml:space="preserve">
-    <value>(указанный файл пуст или содержит нетекстовые символы)</value>
+    <value>(указанный файл пуст или не является текстом в кодировке UTF8)</value>
   </data>
   <data name="StatsForTextFile" xml:space="preserve">
     <value>Статистика для указанного файла:</value>
