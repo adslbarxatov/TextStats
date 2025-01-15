@@ -98,7 +98,7 @@ namespace RD_AAOW
 		// Запрос справки
 		private void AboutButton_Clicked (object sender, EventArgs e)
 			{
-			RDGenerics.ShowAbout (false);
+			RDInterface.ShowAbout (false);
 			}
 
 		// Закрытие окна
@@ -207,15 +207,15 @@ namespace RD_AAOW
 			bool hasFile = !string.IsNullOrWhiteSpace (TextStatsMath.LastFilePath);
 			if (!hasManualText && !hasFile)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "SearchSourceNotFound", 1000);
+				RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "SearchSourceNotFound", 1000);
 				return;
 				}
 
 			// Ввод текста
-			string textForSearch = RDGenerics.LocalizedMessageBox ("SearchRequest", true, 50);
+			string textForSearch = RDInterface.LocalizedMessageBox ("SearchRequest", true, 50);
 			if (string.IsNullOrWhiteSpace (textForSearch))
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "SearchSourceNotFound", 1000);
+				RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "SearchSourceNotFound", 1000);
 				return;
 				}
 
@@ -224,7 +224,7 @@ namespace RD_AAOW
 			bool useManualText = false;
 			if (hasFile && hasManualText)
 				{
-				switch (RDGenerics.MessageBox (RDMessageTypes.Question_Center, RDLocale.GetText ("SearchVariant"),
+				switch (RDInterface.MessageBox (RDMessageTypes.Question_Center, RDLocale.GetText ("SearchVariant"),
 					RDLocale.GetText ("SearchVariantFile"), RDLocale.GetText ("SearchVariantText"),
 					RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel)))
 					{
@@ -258,7 +258,7 @@ namespace RD_AAOW
 
 			// Результат
 			string stats = TextStatsMath.SearchForText (sourceText, textForSearch);
-			if (RDGenerics.MessageBox (RDMessageTypes.Information_Left, stats,
+			if (RDInterface.MessageBox (RDMessageTypes.Information_Left, stats,
 				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Close),
 				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save)) == RDMessageButtons.ButtonTwo)
 				{
