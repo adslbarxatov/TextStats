@@ -110,7 +110,6 @@ namespace RD_AAOW
 				l.HorizontalTextAlignment = TextAlignment.Start;
 				l.Margin = new Thickness (3);
 				l.Text = captions[i + 1];
-				/*l.TextColor = AndroidSupport.MasterTextColor;*/
 				l.TextColor = RDInterface.GetInterfaceColor (RDInterfaceColors.AndroidTextColor);
 				resultField.Add (l);
 
@@ -122,7 +121,6 @@ namespace RD_AAOW
 				resultFields[i].HorizontalTextAlignment = TextAlignment.Start;
 				resultFields[i].Margin = new Thickness (6);
 				resultFields[i].Text = "";
-				/*resultFields[i].TextColor = AndroidSupport.MasterTextColor;*/
 				resultFields[i].TextColor = RDInterface.GetInterfaceColor (RDInterfaceColors.AndroidTextColor);
 				resultField.Add (resultFields[i]);
 
