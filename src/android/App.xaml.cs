@@ -16,15 +16,13 @@ namespace RD_AAOW
 		private string[] currentStats;
 		private string fullStats;
 
-		private List<string> searchVariants = new List<string> ();
+		private List<string> searchVariants = [];
 
 		// Цветовая схема
-		private readonly Color
-			solutionMasterBackColor = Color.FromArgb ("#e0f0ff"),
-			solutionFieldBackColor = Color.FromArgb ("#f0f8ff"),
-
-			aboutMasterBackColor = Color.FromArgb ("#F0FFF0"),
-			aboutFieldBackColor = Color.FromArgb ("#D0FFD0");
+		private readonly Color solutionMasterBackColor = Color.FromArgb ("#e0f0ff");
+		private readonly Color solutionFieldBackColor = Color.FromArgb ("#f0f8ff");
+		private readonly Color aboutMasterBackColor = Color.FromArgb ("#F0FFF0");
+		private readonly Color aboutFieldBackColor = Color.FromArgb ("#D0FFD0");
 
 		#endregion
 
@@ -33,7 +31,7 @@ namespace RD_AAOW
 		private ContentPage solutionPage, aboutPage;
 
 		private Label aboutFontSizeField, statsLabel;
-		private List<Label> resultFields = new List<Label> ();
+		private List<Label> resultFields = [];
 
 		private Button languageButton;
 
@@ -52,11 +50,23 @@ namespace RD_AAOW
 			{
 			// Инициализация
 			InitializeComponent ();
+			}
+
+		// Замена определению MainPage = new MasterPage ()
+		protected override Window CreateWindow (IActivationState activationState)
+			{
+			return new Window (AppShell ());
+			}
+
+		// Инициализация разметки страниц
+		private Page AppShell()
+			{
+			Page mainPage = new MasterPage ();
 			flags = RDGenerics.GetAppStartupFlags (RDAppStartupFlags.DisableXPUN |
 				RDAppStartupFlags.CanReadFiles | RDAppStartupFlags.CanWriteFiles);
 
 			// Общая конструкция страниц приложения
-			MainPage = new MasterPage ();
+			/*MainPage = new MasterPage ();*/
 
 			solutionPage = RDInterface.ApplyPageSettings (new SolutionPage (), "SolutionPage",
 				RDLocale.GetText ("SolutionPage"), solutionMasterBackColor);
@@ -64,7 +74,8 @@ namespace RD_AAOW
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout),
 				aboutMasterBackColor);
 
-			RDInterface.SetMasterPage (MainPage, solutionPage, solutionMasterBackColor);
+			/*RDInterface.SetMasterPage (MainPage, solutionPage, solutionMasterBackColor);*/
+			RDInterface.SetMasterPage (mainPage, solutionPage, solutionMasterBackColor);
 
 			#region Основная страница
 
@@ -193,6 +204,7 @@ namespace RD_AAOW
 
 			// Отображение подсказок первого старта
 			ShowStartupTips ();
+			return mainPage;
 			}
 
 		// Метод отображает подсказки при первом запуске
@@ -203,11 +215,11 @@ namespace RD_AAOW
 				await RDInterface.XPUNLoop ();
 
 			// Требование принятия Политики
-			if (TipsState.HasFlag (TipTypes.PolicyTip))
-				return;
+			/*if (TipsState.HasFlag (TipTypes.PolicyTip))
+				return;*/
 
 			await RDInterface.PolicyLoop ();
-			TipsState |= TipTypes.PolicyTip;
+			/*TipsState |= TipTypes.PolicyTip;*/
 			}
 
 		/// <summary>
@@ -217,7 +229,7 @@ namespace RD_AAOW
 			{
 			}
 
-		/// <summary>
+		/*/// <summary>
 		/// Возвращает или задаёт состав флагов просмотра справочных сведений
 		/// </summary>
 		public static TipTypes TipsState
@@ -242,7 +254,7 @@ namespace RD_AAOW
 			/// Принятие Политики и первая подсказка
 			/// </summary>
 			PolicyTip = 0x0001,
-			}
+			}*/
 
 		#endregion
 
