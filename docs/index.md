@@ -62,7 +62,7 @@ abcdefghijklmnopqrstuvwxyz
 - Connecting characters:
 
 ```
--'’
+- ' ’
 ```
 
 &nbsp;

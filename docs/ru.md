@@ -63,7 +63,7 @@ abcdefghijklmnopqrstuvwxyz
 - Соединяющие символы:
 
 ```
--'’
+- ' ’
 ```
 
 &nbsp;
