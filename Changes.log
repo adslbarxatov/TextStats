@@ -1,5 +1,9 @@
 TextStats: changes log
 
+Version 1.4.3:
+• Android: MAUI support packages have been updated;
+• Windows: internal assemblies have been updated
+
 Version 1.4.2:
 • Added support for new offline help provider;
 • Android: MAUI support packages have been updated
