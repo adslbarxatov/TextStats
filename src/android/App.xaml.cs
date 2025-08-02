@@ -66,9 +66,9 @@ namespace RD_AAOW
 				RDAppStartupFlags.CanReadFiles | RDAppStartupFlags.CanWriteFiles);
 
 			// Общая конструкция страниц приложения
-			solutionPage = RDInterface.ApplyPageSettings (new SolutionPage (), /*"SolutionPage",*/
+			solutionPage = RDInterface.ApplyPageSettings (new SolutionPage (),
 				RDLocale.GetText ("SolutionPage"), solutionMasterBackColor);
-			aboutPage = RDInterface.ApplyPageSettings (new AboutPage (), /*"AboutPage",*/
+			aboutPage = RDInterface.ApplyPageSettings (new AboutPage (),
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout),
 				aboutMasterBackColor);
 
