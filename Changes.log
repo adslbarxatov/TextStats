@@ -1,7 +1,10 @@
 TextStats: changes log
 
 ToDo:
-- Список и количество уникальных слов
+- List and quantity of unique words
+
+Version 1.4.6:
+• Internal assemblies have been updated
 
 Version 1.4.5:
 • Android: MAUI support packages have been updated;
