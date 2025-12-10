@@ -3,6 +3,11 @@ TextStats: changes log
 ToDo:
 - List and quantity of unique words
 
+Version 1.5:
+• Windows: app has been migrated to .NET 10;
+• Android: app has been targeted to API 36;
+• Internal assemblies have been updated
+
 Version 1.4.6:
 • Internal assemblies have been updated
 

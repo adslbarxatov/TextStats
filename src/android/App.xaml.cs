@@ -1,5 +1,5 @@
-﻿using Microsoft.Maui.Controls;
-using System.ComponentModel;
+﻿/*using Microsoft.Maui.Controls;
+using System.ComponentModel;*/
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace RD_AAOW
