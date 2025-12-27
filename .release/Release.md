@@ -1,4 +1,4 @@
-_Changes for v 1.5_:
+_Changes for v 1.5.1_:
+- Internal assemblies have been updated;
 - `Windows`: app has been migrated to `.NET 10`;
-- `Android`: app has been targeted to `API 36`;
-- Internal assemblies have been updated
+- `Android`: app has been targeted to `API 36`

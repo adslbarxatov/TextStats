@@ -1,7 +1,4 @@
-﻿/*using Microsoft.Maui.Controls;
-using System.ComponentModel;*/
-
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+﻿[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace RD_AAOW
 	{
 	/// <summary>
@@ -362,7 +359,8 @@ namespace RD_AAOW
 				}
 
 			// Ввод текста
-			string textForSearch = await RDInterface.ShowInput (ProgramDescription.AssemblyVisibleName,
+			/*string textForSearch = await RDInterface.ShowInput (ProgramDescription.AssemblyVisibleName,*/
+			string textForSearch = await RDInterface.ShowInput (RDGenerics.DefaultAssemblyVisibleName,
 				RDLocale.GetText ("SearchRequest"), RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK),
 				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel), 50, Keyboard.Default);
 			if (string.IsNullOrWhiteSpace (textForSearch))

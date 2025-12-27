@@ -21,7 +21,9 @@ namespace RD_AAOW
 			{
 			// Инициализация
 			InitializeComponent ();
-			this.Text = ProgramDescription.AssemblyTitle;
+			/*this.Text = ProgramDescription.AssemblyTitle;*/
+			this.Text = RDGenerics.DefaultAssemblyVisibleName;
+
 			RDGenerics.LoadWindowDimensions (this);
 
 			LanguageCombo.Items.AddRange (RDLocale.LanguagesNames);
@@ -33,7 +35,6 @@ namespace RD_AAOW
 				{
 				LanguageCombo.SelectedIndex = 0;
 				}
-
 			}
 
 		// Определения для горячих клавиш
