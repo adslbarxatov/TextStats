@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.RD_AAOW.TextStats"
-	android:installLocation="internalOnly" android:versionCode="600119" android:versionName="1.5.1">
+	android:installLocation="internalOnly" android:versionCode="600120" android:versionName="1.5.2">
 
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="36" />
 

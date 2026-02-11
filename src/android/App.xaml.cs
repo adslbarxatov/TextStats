@@ -1,4 +1,11 @@
-﻿[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+﻿using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Xaml;
+using Microsoft.Maui.Graphics;
+using System;
+using System.Collections.Generic;
+
+[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace RD_AAOW
 	{
 	/// <summary>
@@ -80,17 +87,17 @@ namespace RD_AAOW
 			manualTextBox = RDInterface.ApplyEditorSettings (solutionPage, "ManualTextBox",
 				solutionFieldBackColor, Keyboard.Text, 10000, "", null, false);
 
-			RDInterface.ApplyButtonSettings (solutionPage, "GetStatsButton",
-				RDLocale.GetText ("GetManualStats"), solutionFieldBackColor, GetStatsButton_Clicked, false);
+			Button st = RDInterface.ApplyButtonSettings (solutionPage, "GetStatsButton",
+				RDLocale.GetText ("GetManualStats"), solutionFieldBackColor, GetStatsButton_Clicked);
 
 			// Загрузка из файла
 			RDInterface.ApplyLabelSettings (solutionPage, "LoadFileLabel",
 				RDLocale.GetText ("LoadFileLabel"), RDLabelTypes.HeaderLeft);
 
-			RDInterface.ApplyButtonSettings (solutionPage, "ClipboardButton",
-				RDLocale.GetText ("ClipboardButton"), solutionFieldBackColor, ClipboardButton_Clicked, false);
+			Button clp = RDInterface.ApplyButtonSettings (solutionPage, "ClipboardButton",
+				RDLocale.GetText ("ClipboardButton"), solutionFieldBackColor, ClipboardButton_Clicked);
 			Button lfb = RDInterface.ApplyButtonSettings (solutionPage, "LoadFileButton",
-				RDLocale.GetText ("FileButton"), solutionFieldBackColor, LoadFile_Clicked, false);
+				RDLocale.GetText ("FileButton"), solutionFieldBackColor, LoadFile_Clicked);
 			Label lft = RDInterface.ApplyLabelSettings (solutionPage, "LoadFileTip",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Message_NotificationPermission),
 				RDLabelTypes.ErrorTip);
@@ -134,18 +141,22 @@ namespace RD_AAOW
 			resultField.IsVisible = false;
 
 			// Вызов меню и сохранение
-			RDInterface.ApplyButtonSettings (solutionPage, "MenuButton",
-				RDDefaultButtons.Menu, solutionFieldBackColor, AboutButton_Clicked);
+			Button mn = RDInterface.ApplyButtonSettings (solutionPage, "MenuButton",
+				RDDefaultButtons.Menu, solutionFieldBackColor, AboutButton_Clicked, true);
 			RDInterface.ApplyButtonSettings (solutionPage, "SearchButton",
-				RDDefaultButtons.Find, solutionFieldBackColor, SearchButton_Clicked);
+				RDDefaultButtons.Find, solutionFieldBackColor, SearchButton_Clicked, true);
 			Button ssb = RDInterface.ApplyButtonSettings (solutionPage, "SaveStatsButton",
-				RDLocale.GetText ("SaveStatsButton"), solutionFieldBackColor, SaveFile_Clicked, false);
+				RDLocale.GetText ("SaveStatsButton"), solutionFieldBackColor, SaveFile_Clicked);
 			Label sst = RDInterface.ApplyLabelSettings (solutionPage, "SaveStatsTip",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Message_NotificationPermission),
 				RDLabelTypes.ErrorTip);
 
 			ssb.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanWriteFiles);
 			sst.IsVisible = flags.HasFlag (RDAppStartupFlags.CanWriteFiles);
+
+			st.HeightRequest = st.MinimumHeightRequest = clp.HeightRequest = clp.MinimumHeightRequest =
+				lfb.HeightRequest = lfb.MinimumHeightRequest = ssb.HeightRequest = ssb.MinimumHeightRequest =
+				mn.HeightRequest;
 
 			#endregion
 
@@ -156,10 +167,10 @@ namespace RD_AAOW
 
 			RDInterface.ApplyButtonSettings (aboutPage, "ManualsButton",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_ReferenceMaterials),
-				aboutFieldBackColor, ReferenceButton_Click, false);
+				aboutFieldBackColor, ReferenceButton_Click);
 			RDInterface.ApplyButtonSettings (aboutPage, "HelpButton",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_HelpSupport),
-				aboutFieldBackColor, HelpButton_Click, false);
+				aboutFieldBackColor, HelpButton_Click);
 			RDInterface.ApplyLabelSettings (aboutPage, "GenericSettingsLabel",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_GenericSettings),
 				RDLabelTypes.HeaderLeft);
@@ -169,28 +180,28 @@ namespace RD_AAOW
 				RDLabelTypes.TipCenter);
 
 			RDInterface.ApplyLabelSettings (aboutPage, "LanguageLabel",
-				RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage),
+				RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguageNC) + ":",
 				RDLabelTypes.DefaultLeft);
 			languageButton = RDInterface.ApplyButtonSettings (aboutPage, "LanguageSelector",
 				RDLocale.LanguagesNames[(int)RDLocale.CurrentLanguage],
-				aboutFieldBackColor, SelectLanguage_Clicked, false);
+				aboutFieldBackColor, SelectLanguage_Clicked);
 
 			RDInterface.ApplyLabelSettings (aboutPage, "FontSizeLabel",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceFontSize),
 				RDLabelTypes.DefaultLeft);
 			RDInterface.ApplyButtonSettings (aboutPage, "FontSizeInc",
-				RDDefaultButtons.Increase, aboutFieldBackColor, FontSizeButton_Clicked);
+				RDDefaultButtons.Increase, aboutFieldBackColor, FontSizeButton_Clicked, true);
 			RDInterface.ApplyButtonSettings (aboutPage, "FontSizeDec",
-				RDDefaultButtons.Decrease, aboutFieldBackColor, FontSizeButton_Clicked);
+				RDDefaultButtons.Decrease, aboutFieldBackColor, FontSizeButton_Clicked, true);
 			aboutFontSizeField = RDInterface.ApplyLabelSettings (aboutPage, "FontSizeField",
 				" ", RDLabelTypes.DefaultCenter);
 
-			RDInterface.ApplyLabelSettings (aboutPage, "HelpHeaderLabel",
+			/*RDInterface.ApplyLabelSettings (aboutPage, "HelpHeaderLabel",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout),
 				RDLabelTypes.HeaderLeft);
 			Label htl = RDInterface.ApplyLabelSettings (aboutPage, "HelpTextLabel",
 				RDGenerics.GetAppHelpText (), RDLabelTypes.SmallLeft);
-			htl.TextType = TextType.Html;
+			htl.TextType = TextType.Html;*/
 
 			FontSizeButton_Clicked (null, null);
 
@@ -359,7 +370,6 @@ namespace RD_AAOW
 				}
 
 			// Ввод текста
-			/*string textForSearch = await RDInterface.ShowInput (ProgramDescription.AssemblyVisibleName,*/
 			string textForSearch = await RDInterface.ShowInput (RDGenerics.DefaultAssemblyVisibleName,
 				RDLocale.GetText ("SearchRequest"), RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK),
 				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel), 50, Keyboard.Default);

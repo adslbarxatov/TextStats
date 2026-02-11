@@ -1,10 +1,7 @@
 TextStats: changes log
 
-ToDo:
-- List and quantity of unique words
-
-Version 1.5.1:
-• Internal assemblies have been updated
+Version 1.5.2:
+• Offline help has been replaced with the PDF format
 
 Version 1.5:
 • Windows: app has been migrated to .NET 10;

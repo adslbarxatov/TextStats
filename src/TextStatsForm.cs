@@ -21,7 +21,6 @@ namespace RD_AAOW
 			{
 			// Инициализация
 			InitializeComponent ();
-			/*this.Text = ProgramDescription.AssemblyTitle;*/
 			this.Text = RDGenerics.DefaultAssemblyVisibleName;
 
 			RDGenerics.LoadWindowDimensions (this);
@@ -38,6 +37,7 @@ namespace RD_AAOW
 			}
 
 		// Определения для горячих клавиш
+
 		/// <summary>
 		/// Метод переопределяет обработку клавиатуры формой
 		/// </summary>
