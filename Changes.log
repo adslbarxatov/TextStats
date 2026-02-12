@@ -1,5 +1,8 @@
 TextStats: changes log
 
+ToDo:
+- Сбой при попытке сохранить статистику при пустом поле результата
+
 Version 1.5.2:
 • Offline help has been replaced with the PDF format
 
