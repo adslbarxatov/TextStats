@@ -18,7 +18,7 @@ namespace RD_AAOW
 		// Прочие параметры
 		private RDAppStartupFlags flags;
 		private string[] currentStats;
-		private string fullStats;
+		private string fullStats = "";
 
 		private List<string> searchVariants = [];
 
@@ -196,13 +196,6 @@ namespace RD_AAOW
 			aboutFontSizeField = RDInterface.ApplyLabelSettings (aboutPage, "FontSizeField",
 				" ", RDLabelTypes.DefaultCenter);
 
-			/*RDInterface.ApplyLabelSettings (aboutPage, "HelpHeaderLabel",
-				RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout),
-				RDLabelTypes.HeaderLeft);
-			Label htl = RDInterface.ApplyLabelSettings (aboutPage, "HelpTextLabel",
-				RDGenerics.GetAppHelpText (), RDLabelTypes.SmallLeft);
-			htl.TextType = TextType.Html;*/
-
 			FontSizeButton_Clicked (null, null);
 
 			#endregion
@@ -354,6 +347,12 @@ namespace RD_AAOW
 		// Метод сохраняет статистику в файл
 		private async void SaveFile_Clicked (object sender, EventArgs e)
 			{
+			if (string.IsNullOrWhiteSpace (fullStats))
+				{
+				RDInterface.ShowBalloon (RDLocale.GetText ("TextIsEmpty"), true);
+				return;
+				}
+
 			await TextStatsMath.PutTextToFile ("Stats.txt", fullStats);
 			}
 

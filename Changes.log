@@ -1,5 +1,10 @@
 TextStats: changes log
 
+Version 1.5.5:
+• Upgraded the update checking method;
+• Package format has been updated;
+• .NET support packages have been updated
+
 Version 1.5.4:
 • Fixed the ability to crash the app with empty stats;
 • .NET support packages have been updated

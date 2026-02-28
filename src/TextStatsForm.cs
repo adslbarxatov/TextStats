@@ -12,7 +12,7 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private string[] currentStats;
-		private string fullStats;
+		private string fullStats = "";
 
 		/// <summary>
 		/// Конструктор. Запускает главную форму
@@ -163,6 +163,13 @@ namespace RD_AAOW
 		// Сохранение статистики
 		private void SaveStats_Click (object sender, EventArgs e)
 			{
+			if (string.IsNullOrWhiteSpace (fullStats))
+				{
+				RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					"TextIsEmpty", 1000);
+				return;
+				}
+
 			SFDialog.ShowDialog ();
 			}
 
