@@ -75,7 +75,6 @@ namespace RD_AAOW
 				return;
 
 			// Локализация
-			/*RDLocale.SetControlsText (this);*/
 			RDLocale.SetControlText (this.Name, EnterTextLabel);
 			RDLocale.SetControlText (this.Name, FromClipboardButton);
 			RDLocale.SetControlText (this.Name, GetManualStats);
@@ -85,9 +84,12 @@ namespace RD_AAOW
 			RDLocale.SetControlText (this.Name, SelectFileLabel);
 			RDLocale.SetControlText (this.Name, StatsLabel);
 
-			BExit.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
-			AboutButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
-			BLanguage.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage);
+			/*BExit. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			AboutButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
+			BLanguage. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage);*/
+			RDLocale.SetDefaultControlText (BExit, RDLDefaultTexts.Button_Exit);
+			RDLocale.SetDefaultControlText (AboutButton, RDLDefaultTexts.Control_AppAbout);
+			RDLocale.SetDefaultControlText (BLanguage, RDLDefaultTexts.Control_InterfaceLanguage);
 
 			OFDialog.Title = RDLocale.GetText ("OFTitle");
 			SFDialog.Title = RDLocale.GetText ("SFTitle");
