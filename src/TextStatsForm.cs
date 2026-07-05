@@ -83,10 +83,6 @@ namespace RD_AAOW
 			RDLocale.SetControlText (this.Name, SelectFileButton);
 			RDLocale.SetControlText (this.Name, SelectFileLabel);
 			RDLocale.SetControlText (this.Name, StatsLabel);
-
-			/*BExit. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
-			AboutButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
-			BLanguage. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage);*/
 			RDLocale.SetDefaultControlText (BExit, RDLDefaultTexts.Button_Exit);
 			RDLocale.SetDefaultControlText (AboutButton, RDLDefaultTexts.Control_AppAbout);
 			RDLocale.SetDefaultControlText (BLanguage, RDLDefaultTexts.Control_InterfaceLanguage);

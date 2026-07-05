@@ -1,5 +1,9 @@
 TextStats: changes log
 
+Version 1.5.9:
+• Windows: applied the updated GitHub markup for version numbers;
+• Android: added the IOP version checker
+
 Version 1.5.8:
 • Internal assemblies have been updated
 
