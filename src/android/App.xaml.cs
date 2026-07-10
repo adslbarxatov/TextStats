@@ -99,7 +99,7 @@ namespace RD_AAOW
 			Button lfb = RDInterface.ApplyButtonSettings (solutionPage, "LoadFileButton",
 				RDLocale.GetText ("FileButton"), solutionFieldBackColor, LoadFile_Clicked);
 			Label lft = RDInterface.ApplyLabelSettings (solutionPage, "LoadFileTip",
-				RDLocale.GetDefaultText (RDLDefaultTexts.Message_NotificationPermission),
+				RDLocale.GetDefaultText (RDLDefaultTexts.Message_ReadWritePermission),
 				RDLabelTypes.ErrorTip);
 
 			lfb.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanReadFiles);
@@ -148,7 +148,7 @@ namespace RD_AAOW
 			Button ssb = RDInterface.ApplyButtonSettings (solutionPage, "SaveStatsButton",
 				RDLocale.GetText ("SaveStatsButton"), solutionFieldBackColor, SaveFile_Clicked);
 			Label sst = RDInterface.ApplyLabelSettings (solutionPage, "SaveStatsTip",
-				RDLocale.GetDefaultText (RDLDefaultTexts.Message_NotificationPermission),
+				RDLocale.GetDefaultText (RDLDefaultTexts.Message_ReadWritePermission),
 				RDLabelTypes.ErrorTip);
 
 			ssb.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanWriteFiles);

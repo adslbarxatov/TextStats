@@ -1,5 +1,10 @@
 TextStats: changes log
 
+Version 1.6:
+• Android: fixed the appearance of the logo on the app splash screen in newer Android versions;
+• Android: adjusted interface behavior when the screen is rotated in newer Android versions;
+• Android: fixed the read/write permission checker
+
 Version 1.5.9:
 • Windows: applied the updated GitHub markup for version numbers;
 • Android: added the IOP version checker
