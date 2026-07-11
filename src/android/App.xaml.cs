@@ -102,8 +102,8 @@ namespace RD_AAOW
 				RDLocale.GetDefaultText (RDLDefaultTexts.Message_ReadWritePermission),
 				RDLabelTypes.ErrorTip);
 
-			lfb.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanReadFiles);
-			lft.IsVisible = flags.HasFlag (RDAppStartupFlags.CanReadFiles);
+			/*lfb.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanReadFiles);*/
+			lft.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanReadFiles);
 
 			// Раздел результатов
 			statsLabel = RDInterface.ApplyLabelSettings (solutionPage, "StatsLabel",
@@ -151,8 +151,8 @@ namespace RD_AAOW
 				RDLocale.GetDefaultText (RDLDefaultTexts.Message_ReadWritePermission),
 				RDLabelTypes.ErrorTip);
 
-			ssb.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanWriteFiles);
-			sst.IsVisible = flags.HasFlag (RDAppStartupFlags.CanWriteFiles);
+			/*ssb.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanWriteFiles);*/
+			sst.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanWriteFiles);
 
 			st.HeightRequest = st.MinimumHeightRequest = clp.HeightRequest = clp.MinimumHeightRequest =
 				lfb.HeightRequest = lfb.MinimumHeightRequest = ssb.HeightRequest = ssb.MinimumHeightRequest =
@@ -282,6 +282,19 @@ namespace RD_AAOW
 		// Метод загружает текст из файла
 		private async void LoadFile_Clicked (object sender, EventArgs e)
 			{
+			// Контроль
+			if (!flags.HasFlag (RDAppStartupFlags.CanReadFiles))
+				{
+				if (await RDInterface.ShowMessage (
+					RDLocale.GetDefaultText (RDLDefaultTexts.Message_ReadWritePermission) + "." +
+					RDLocale.RNRN + RDLocale.GetDefaultText (RDLDefaultTexts.Message_GoToPermissions),
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_Yes),
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_No)))
+					RDInterface.CallAppSettings ();
+				return;
+				}
+
+			// Загрузка файла
 			string text = await TextStatsMath.GetTextFromFile ();
 			if (string.IsNullOrWhiteSpace (text))
 				{
@@ -347,6 +360,19 @@ namespace RD_AAOW
 		// Метод сохраняет статистику в файл
 		private async void SaveFile_Clicked (object sender, EventArgs e)
 			{
+			// Контоль
+			if (!flags.HasFlag (RDAppStartupFlags.CanWriteFiles))
+				{
+				if (await RDInterface.ShowMessage (
+					RDLocale.GetDefaultText (RDLDefaultTexts.Message_ReadWritePermission) + "." +
+					RDLocale.RNRN + RDLocale.GetDefaultText (RDLDefaultTexts.Message_GoToPermissions),
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_Yes),
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_No)))
+					RDInterface.CallAppSettings ();
+				return;
+				}
+
+			// Запись
 			if (string.IsNullOrWhiteSpace (fullStats))
 				{
 				RDInterface.ShowBalloon (RDLocale.GetText ("TextIsEmpty"), true);
@@ -359,6 +385,18 @@ namespace RD_AAOW
 		// Поиск отдельных символов или слов
 		private async void SearchButton_Clicked (object sender, EventArgs e)
 			{
+			// Контоль доступа на запись файла статистики
+			if (!flags.HasFlag (RDAppStartupFlags.CanReadFiles) || !flags.HasFlag (RDAppStartupFlags.CanWriteFiles))
+				{
+				if (await RDInterface.ShowMessage (
+					RDLocale.GetDefaultText (RDLDefaultTexts.Message_ReadWritePermission) + "." +
+					RDLocale.RNRN + RDLocale.GetDefaultText (RDLDefaultTexts.Message_GoToPermissions),
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_Yes),
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_No)))
+					RDInterface.CallAppSettings ();
+				return;
+				}
+
 			// Контроль существования источника
 			bool hasManualText = !string.IsNullOrWhiteSpace (manualTextBox.Text);
 			bool hasFile = !string.IsNullOrWhiteSpace (TextStatsMath.LastFilePath);
