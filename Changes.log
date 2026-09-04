@@ -1,5 +1,8 @@
 TextStats: changes log
 
+Version 1.6.2:
+• Android: enabled the code trimmer and R8 optimization tools (APK size has been reduced by 70%)
+
 Version 1.6.1:
 • Android: the list of permissions and the checking method have been adjusted
 

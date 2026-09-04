@@ -87,8 +87,6 @@ namespace RD_AAOW
 			RDLocale.SetDefaultControlText (AboutButton, RDLDefaultTexts.Control_AppAbout);
 			RDLocale.SetDefaultControlText (BLanguage, RDLDefaultTexts.Control_InterfaceLanguage);
 
-			OFDialog.Title = RDLocale.GetText ("OFTitle");
-			SFDialog.Title = RDLocale.GetText ("SFTitle");
 			OFDialog.Filter = SFDialog.Filter = RDLocale.GetText ("OFFilter");
 
 			StatsSection.Items.Clear ();

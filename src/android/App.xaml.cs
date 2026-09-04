@@ -102,7 +102,6 @@ namespace RD_AAOW
 				RDLocale.GetDefaultText (RDLDefaultTexts.Message_ReadWritePermission),
 				RDLabelTypes.ErrorTip);
 
-			/*lfb.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanReadFiles);*/
 			lft.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanReadFiles);
 
 			// Раздел результатов
@@ -151,7 +150,6 @@ namespace RD_AAOW
 				RDLocale.GetDefaultText (RDLDefaultTexts.Message_ReadWritePermission),
 				RDLabelTypes.ErrorTip);
 
-			/*ssb.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanWriteFiles);*/
 			sst.IsVisible = !flags.HasFlag (RDAppStartupFlags.CanWriteFiles);
 
 			st.HeightRequest = st.MinimumHeightRequest = clp.HeightRequest = clp.MinimumHeightRequest =
