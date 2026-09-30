@@ -133,7 +133,7 @@
     <value>Select some text file</value>
   </data>
   <data name="OFFilter" xml:space="preserve">
-    <value>Text files (*.txt)|*.txt</value>
+    <value>Text files (*.rtf, *.txt)|*.rtf;*.txt</value>
   </data>
   <data name="NonTextFile" xml:space="preserve">
     <value>(the specified file is empty or contains non-text characters)</value>
@@ -179,5 +179,8 @@
   </data>
   <data name="SearchHeaderFmt" xml:space="preserve">
     <value> search results for “{0:S}”</value>
+  </data>
+  <data name="SFFilter" xml:space="preserve">
+    <value>Text files (*.txt)|*.txt</value>
   </data>
 </root>

@@ -1,18 +1,13 @@
 _en_us_
 
-- `Android`: enabled the code trimmer and R8 optimization tools (APK size has been reduced by 70%);
-- `Android`: the list of permissions and the checking method have been adjusted;
-- `Android`: fixed the appearance of the logo on the app splash screen in newer Android versions;
-- `Android`: adjusted interface behavior when the screen is rotated in newer Android versions
-
+- `Windows`: implemented support for `RTF` format;
+- `Android`: enabled the code trimmer and R8 optimization tools (APK size has been reduced by 70%)
 
 ⁂
 
 _ru_ru_
 
-- `Android`: включены инструменты оптимизации кода и R8 (размер APK-файла уменьшен на 70%);
-- `Android`: перенастроен список разрешений и метод их проверки;
-- `Android`: исправлено отображение логотипа на заставке приложения в новых версиях Android;
-- `Android`: скорректировано поведение интерфейса при повороте экрана в новых версиях Android
+- `Windows`: реализована поддержка формата `RTF`;
+- `Android`: включены инструменты оптимизации кода и R8 (размер APK-файла уменьшен на 70%)
 
 ⁂

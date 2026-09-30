@@ -6,11 +6,6 @@ using Microsoft.Maui;
 
 namespace RD_AAOW
 	{
-	/*[Activity (Label = "TextStats",
-		Icon = "@drawable/icon",
-		Theme = "@style/SplashTheme",
-		MainLauncher = true,
-		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]*/
 	[Activity (Name = "RD_AAOW.MainActivity")]
 	public class MainActivity: MauiAppCompatActivity
 		{

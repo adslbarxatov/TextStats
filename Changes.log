@@ -1,5 +1,8 @@
 TextStats: changes log
 
+Version 1.7:
+• Windows: implemented support for RTF format
+
 Version 1.6.2:
 • Android: enabled the code trimmer and R8 optimization tools (APK size has been reduced by 70%)
 
