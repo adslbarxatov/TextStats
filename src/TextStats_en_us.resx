@@ -183,4 +183,19 @@
   <data name="SFFilter" xml:space="preserve">
     <value>Text files (*.txt)|*.txt</value>
   </data>
+  <data name="LettersLabel" xml:space="preserve">
+    <value>Letters (characters defined as part of words):</value>
+  </data>
+  <data name="MOptions" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="MSettings" xml:space="preserve">
+    <value>&amp;Settings</value>
+  </data>
+  <data name="DigitsLabel" xml:space="preserve">
+    <value>Digits (can also be part of words):</value>
+  </data>
+  <data name="CharsLabel" xml:space="preserve">
+    <value>Characters that link words / don’t break them:</value>
+  </data>
 </root>

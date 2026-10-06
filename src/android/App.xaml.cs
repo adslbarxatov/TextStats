@@ -21,10 +21,13 @@ namespace RD_AAOW
 		private string fullStats = "";
 
 		private List<string> searchVariants = [];
+		private List<string> menuVariants = [];
 
 		// Цветовая схема
 		private readonly Color solutionMasterBackColor = Color.FromArgb ("#e0f0ff");
 		private readonly Color solutionFieldBackColor = Color.FromArgb ("#f0f8ff");
+		private readonly Color settingsMasterBackColor = Color.FromArgb ("#e0e0ef");
+		private readonly Color settingsFieldBackColor = Color.FromArgb ("#f0e8ef");
 		private readonly Color aboutMasterBackColor = Color.FromArgb ("#F0FFF0");
 		private readonly Color aboutFieldBackColor = Color.FromArgb ("#D0FFD0");
 
@@ -32,14 +35,14 @@ namespace RD_AAOW
 
 		#region Переменные страниц
 
-		private ContentPage solutionPage, aboutPage;
+		private ContentPage solutionPage, aboutPage, settingsPage;
 
 		private Label aboutFontSizeField, statsLabel;
 		private List<Label> resultFields = [];
 
 		private Button languageButton;
 
-		private Editor manualTextBox;
+		private Editor manualTextBox, lettersField, digitsField, charsField;
 
 		private StackLayout resultField;
 
@@ -72,6 +75,8 @@ namespace RD_AAOW
 			// Общая конструкция страниц приложения
 			solutionPage = RDInterface.ApplyPageSettings (new SolutionPage (),
 				RDLocale.GetText ("SolutionPage"), solutionMasterBackColor);
+			settingsPage = RDInterface.ApplyPageSettings (new SettingsPage (),
+				RDLocale.GetText ("SettingsPage"), settingsMasterBackColor);
 			aboutPage = RDInterface.ApplyPageSettings (new AboutPage (),
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout),
 				aboutMasterBackColor);
@@ -141,7 +146,7 @@ namespace RD_AAOW
 
 			// Вызов меню и сохранение
 			Button mn = RDInterface.ApplyButtonSettings (solutionPage, "MenuButton",
-				RDDefaultButtons.Menu, solutionFieldBackColor, AboutButton_Clicked, true);
+				RDDefaultButtons.Menu, solutionFieldBackColor, MenuButton_Clicked, true);
 			RDInterface.ApplyButtonSettings (solutionPage, "SearchButton",
 				RDDefaultButtons.Find, solutionFieldBackColor, SearchButton_Clicked, true);
 			Button ssb = RDInterface.ApplyButtonSettings (solutionPage, "SaveStatsButton",
@@ -169,32 +174,54 @@ namespace RD_AAOW
 			RDInterface.ApplyButtonSettings (aboutPage, "HelpButton",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_HelpSupport),
 				aboutFieldBackColor, HelpButton_Click);
-			RDInterface.ApplyLabelSettings (aboutPage, "GenericSettingsLabel",
+			/*RDInterface.ApplyLabelSettings (aboutPage, "GenericSettingsLabel",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_GenericSettings),
-				RDLabelTypes.HeaderLeft);
+				RDLabelTypes.HeaderLeft);*/
 
-			RDInterface.ApplyLabelSettings (aboutPage, "RestartTipLabel",
+			#endregion
+
+			#region Страница настроек
+
+			RDInterface.ApplyLabelSettings (settingsPage, "RestartTipLabel",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Message_RestartRequired),
 				RDLabelTypes.TipCenter);
 
-			RDInterface.ApplyLabelSettings (aboutPage, "LanguageLabel",
+			RDInterface.ApplyLabelSettings (settingsPage, "LanguageLabel",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage) + ":",
 				RDLabelTypes.DefaultLeft);
-			languageButton = RDInterface.ApplyButtonSettings (aboutPage, "LanguageSelector",
+			languageButton = RDInterface.ApplyButtonSettings (settingsPage, "LanguageSelector",
 				RDLocale.LanguagesNamesList[(int)RDLocale.CurrentLanguage],
-				aboutFieldBackColor, SelectLanguage_Clicked);
+				settingsFieldBackColor, SelectLanguage_Clicked);
 
-			RDInterface.ApplyLabelSettings (aboutPage, "FontSizeLabel",
+			RDInterface.ApplyLabelSettings (settingsPage, "FontSizeLabel",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceFontSize),
 				RDLabelTypes.DefaultLeft);
-			RDInterface.ApplyButtonSettings (aboutPage, "FontSizeInc",
-				RDDefaultButtons.Increase, aboutFieldBackColor, FontSizeButton_Clicked, true);
-			RDInterface.ApplyButtonSettings (aboutPage, "FontSizeDec",
-				RDDefaultButtons.Decrease, aboutFieldBackColor, FontSizeButton_Clicked, true);
-			aboutFontSizeField = RDInterface.ApplyLabelSettings (aboutPage, "FontSizeField",
+			RDInterface.ApplyButtonSettings (settingsPage, "FontSizeInc",
+				RDDefaultButtons.Increase, settingsFieldBackColor, FontSizeButton_Clicked, true);
+			RDInterface.ApplyButtonSettings (settingsPage, "FontSizeDec",
+				RDDefaultButtons.Decrease, settingsFieldBackColor, FontSizeButton_Clicked, true);
+			aboutFontSizeField = RDInterface.ApplyLabelSettings (settingsPage, "FontSizeField",
 				" ", RDLabelTypes.DefaultCenter);
 
 			FontSizeButton_Clicked (null, null);
+
+			RDInterface.ApplyLabelSettings (settingsPage, "LettersLabel", RDLocale.GetText ("LettersLabel"),
+				RDLabelTypes.DefaultLeft);
+			lettersField = RDInterface.ApplyEditorSettings (settingsPage, "LettersField", settingsFieldBackColor,
+				Keyboard.Default, 200, TextStatsMath.LettersSet, Letters_Edited, true);
+			lettersField.FontFamily = RDGenerics.MonospaceFont;
+
+			RDInterface.ApplyLabelSettings (settingsPage, "DigitsLabel", RDLocale.GetText ("DigitsLabel"),
+				RDLabelTypes.DefaultLeft);
+			digitsField = RDInterface.ApplyEditorSettings (settingsPage, "DigitsField", settingsFieldBackColor,
+				Keyboard.Default, 200, TextStatsMath.DigitsSet, Digits_Edited, true);
+			digitsField.FontFamily = RDGenerics.MonospaceFont;
+
+			RDInterface.ApplyLabelSettings (settingsPage, "CharsLabel", RDLocale.GetText ("CharsLabel"),
+				RDLabelTypes.DefaultLeft);
+			charsField = RDInterface.ApplyEditorSettings (settingsPage, "CharsField", settingsFieldBackColor,
+				Keyboard.Default, 200, TextStatsMath.CharactersSet, Chars_Edited, true);
+			charsField.FontFamily = RDGenerics.MonospaceFont;
 
 			#endregion
 
@@ -263,9 +290,31 @@ namespace RD_AAOW
 		#region Рабочая зона
 
 		// Метод открывает страницу О программе
-		private void AboutButton_Clicked (object sender, EventArgs e)
+		private async void MenuButton_Clicked (object sender, EventArgs e)
 			{
-			RDInterface.SetCurrentPage (aboutPage, aboutMasterBackColor);
+			// Выбор варианта
+			if (menuVariants.Count < 1)
+				{
+				menuVariants.Add (RDLocale.GetText ("SettingsPage"));
+				menuVariants.Add (RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout));
+				}
+
+			int res = await RDInterface.ShowList (RDLocale.GetText ("Menu"),
+				RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel), menuVariants);
+			if (res < 0)
+				return;
+
+			// Запуск
+			switch (res)
+				{
+				case 0:
+					RDInterface.SetCurrentPage (settingsPage, settingsMasterBackColor);
+					break;
+
+				case 1:
+					RDInterface.SetCurrentPage (aboutPage, aboutMasterBackColor);
+					break;
+				}
 			}
 
 		// Метод извлекает текст из буфера обмена
@@ -469,6 +518,26 @@ namespace RD_AAOW
 					RDLocale.RNRN + stats;
 				await TextStatsMath.PutTextToFile ("SearchStats.txt", stats);
 				}
+			}
+
+		#endregion
+
+		#region Настройка
+
+		// Методы сохранения заданных наборов символов
+		private async void Letters_Edited (object sender, TextChangedEventArgs e)
+			{
+			TextStatsMath.LettersSet = lettersField.Text;
+			}
+
+		private async void Digits_Edited (object sender, TextChangedEventArgs e)
+			{
+			TextStatsMath.DigitsSet = digitsField.Text;
+			}
+
+		private async void Chars_Edited (object sender, TextChangedEventArgs e)
+			{
+			TextStatsMath.CharactersSet = charsField.Text;
 			}
 
 		#endregion

@@ -1,5 +1,12 @@
 TextStats: changes log
 
+Version 2.0:
+• Implemented the ability to define own letters, digits and word-linking characters;
+• Windows: implemented the regular window menu;
+• Android: added the settings section;
+• Windows: adjusted placement of some interface elements;
+• User videoguide has been added
+
 Version 1.7:
 • Windows: implemented support for RTF format
 

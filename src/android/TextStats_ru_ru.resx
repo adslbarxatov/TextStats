@@ -180,4 +180,19 @@
   <data name="SearchVariantText" xml:space="preserve">
     <value>Текст</value>
   </data>
+  <data name="SettingsPage" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="LettersLabel" xml:space="preserve">
+    <value>Буквы (символы, определяемые как часть слов):</value>
+  </data>
+  <data name="DigitsLabel" xml:space="preserve">
+    <value>Цифры (также могут быть частью слов):</value>
+  </data>
+  <data name="CharsLabel" xml:space="preserve">
+    <value>Символы, которые сцепляют / не разрывают слова:</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Меню</value>
+  </data>
 </root>
