@@ -1,5 +1,9 @@
 TextStats: changes log
 
+Version 2.0.1:
+• Android: the app targets API 37 / .NET 11 now;
+• Internal assemblies have been updated
+
 Version 2.0:
 • Implemented the ability to define own letters, digits and word-linking characters;
 • Windows: implemented the regular window menu;

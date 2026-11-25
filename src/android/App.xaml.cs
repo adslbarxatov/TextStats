@@ -1,11 +1,10 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Xaml;
 using Microsoft.Maui.Graphics;
 using System;
 using System.Collections.Generic;
 
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+/*[assembly: XamlCompilation (Xaml CompilationOptions.Compile)]*/
 namespace RD_AAOW
 	{
 	/// <summary>
@@ -174,9 +173,6 @@ namespace RD_AAOW
 			RDInterface.ApplyButtonSettings (aboutPage, "HelpButton",
 				RDLocale.GetDefaultText (RDLDefaultTexts.Control_HelpSupport),
 				aboutFieldBackColor, HelpButton_Click);
-			/*RDInterface.ApplyLabelSettings (aboutPage, "GenericSettingsLabel",
-				RDLocale.GetDefaultText (RDLDefaultTexts.Control_GenericSettings),
-				RDLabelTypes.HeaderLeft);*/
 
 			#endregion
 
